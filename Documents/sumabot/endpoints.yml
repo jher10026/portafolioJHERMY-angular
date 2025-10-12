@@ -1,0 +1,3 @@
+# Action server (donde corre el código Python personalizado)
+action_endpoint:
+  url: "http://localhost:5055/webhook"

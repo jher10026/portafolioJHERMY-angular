@@ -1,0 +1,67 @@
+version: "3.1"
+
+stories:
+# ==========================================
+# STORY 1: Conversación simple de saludo
+# ==========================================
+- story: Saludo simple
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: despedida
+  - action: utter_despedida
+
+# ==========================================
+# STORY 2: Consulta sobre matrícula
+# ==========================================
+- story: Pregunta sobre matrícula
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_matricula
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+  - intent: agradecer
+  - action: utter_de_nada
+  - intent: despedida
+  - action: utter_despedida
+
+# ==========================================
+# STORY 3: Consulta sobre horarios
+# ==========================================
+- story: Pregunta sobre horarios
+  steps:
+  - intent: consulta_horarios
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+  - intent: agradecer
+  - action: utter_de_nada
+
+# ==========================================
+# STORY 4: Múltiples consultas
+# ==========================================
+- story: Varias preguntas seguidas
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consulta_matricula
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+  - intent: consulta_horarios
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+  - intent: despedida
+  - action: utter_despedida
+
+# ==========================================
+# STORY 5: Usuario pregunta capacidades
+# ==========================================
+- story: Conocer al bot
+  steps:
+  - intent: preguntar_nombre
+  - action: utter_presentacion
+  - intent: preguntar_capacidades
+  - action: utter_capacidades
+  - intent: consulta_titulacion
+  - action: utter_buscando
+  - action: action_respuesta_inteligente

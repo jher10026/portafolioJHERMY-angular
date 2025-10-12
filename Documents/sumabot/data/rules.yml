@@ -1,0 +1,87 @@
+version: "3.1"
+
+rules:
+# ==========================================
+# REGLA: Siempre saludar al inicio
+# ==========================================
+- rule: Saludar cuando el usuario saluda
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+
+# ==========================================
+# REGLA: Siempre despedirse
+# ==========================================
+- rule: Despedirse cuando el usuario se despide
+  steps:
+  - intent: despedida
+  - action: utter_despedida
+
+# ==========================================
+# REGLA: Responder a agradecimientos
+# ==========================================
+- rule: Responder cuando agradecen
+  steps:
+  - intent: agradecer
+  - action: utter_de_nada
+
+# ==========================================
+# REGLA: Presentarse cuando preguntan nombre
+# ==========================================
+- rule: Decir nombre cuando preguntan
+  steps:
+  - intent: preguntar_nombre
+  - action: utter_presentacion
+
+# ==========================================
+# REGLA: Mostrar capacidades
+# ==========================================
+- rule: Listar capacidades cuando preguntan
+  steps:
+  - intent: preguntar_capacidades
+  - action: utter_capacidades
+
+# ==========================================
+# REGLA: Usar IA cuando no se entiende (fallback)
+# ==========================================
+- rule: Activar respuesta inteligente para consultas
+  steps:
+  - intent: nlu_fallback
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+
+- rule: Activar IA para consultas generales
+  steps:
+  - intent: consulta_general
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+
+- rule: Activar IA para consultas de matrícula
+  steps:
+  - intent: consulta_matricula
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+
+- rule: Activar IA para consultas de horarios
+  steps:
+  - intent: consulta_horarios
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+
+- rule: Activar IA para consultas de titulación
+  steps:
+  - intent: consulta_titulacion
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+
+- rule: Activar IA para consultas de trámites
+  steps:
+  - intent: consulta_tramites
+  - action: utter_buscando
+  - action: action_respuesta_inteligente
+
+- rule: Activar IA para consultas de contactos
+  steps:
+  - intent: consulta_contactos
+  - action: utter_buscando
+  - action: action_respuesta_inteligente

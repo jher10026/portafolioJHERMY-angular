@@ -1,0 +1,30 @@
+# Entorno virtual
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Archivos SECRETOS (NO SUBIR)
+.env
+*.env
+.api_key
+
+# Modelos de Rasa (muy pesados)
+models/*.tar.gz
+
+# Base de datos
+*.db
+*.sqlite
+chroma_db/
+
+# Temporales
+.rasa/
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db

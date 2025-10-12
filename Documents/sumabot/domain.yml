@@ -1,0 +1,75 @@
+version: "3.1"
+
+# ==========================================
+# INTENTS: Intenciones que el bot reconoce
+# ==========================================
+intents:
+  - saludo
+  - despedida
+  - agradecer
+  - consulta_matricula
+  - consulta_horarios
+  - consulta_titulacion
+  - consulta_tramites
+  - consulta_contactos
+  - consulta_general
+  - preguntar_nombre
+  - preguntar_capacidades
+  - nlu_fallback
+
+# ==========================================
+# ENTITIES: Información específica a extraer
+# ==========================================
+entities:
+  - tramite
+  - documento
+  - fecha
+
+# ==========================================
+# RESPONSES: Respuestas predefinidas
+# ==========================================
+responses:
+  # Saludo inicial
+  utter_saludo:
+  - text: "¡Hola! 👋 Soy **Sumabot**, tu asistente virtual de la Escuela Profesional de Ingeniería de Sistemas de la UNAJMA. ¿En qué puedo ayudarte hoy?"
+  
+  # Despedida
+  utter_despedida:
+  - text: "¡Hasta pronto! 😊 Si tienes más dudas, no dudes en escribirme. ¡Que tengas un excelente día!"
+  
+  # Agradecimiento
+  utter_de_nada:
+  - text: "¡De nada! 😊 Estoy aquí para ayudarte."
+  - text: "¡Con gusto! Si necesitas algo más, aquí estoy."
+  - text: "¡Para eso estoy! 👍"
+  
+  # Presentación
+  utter_presentacion:
+  - text: "Soy Sumabot 🤖, un asistente virtual creado para ayudar a los estudiantes de Ingeniería de Sistemas de la UNAJMA. Puedo responder preguntas sobre matrícula, horarios, titulación, trámites y más."
+  
+  # Capacidades
+  utter_capacidades:
+  - text: "Puedo ayudarte con:\n\n📋 Información sobre **matrícula**\n⏰ Consulta de **horarios**\n🎓 Proceso de **titulación**\n📄 **Trámites** administrativos\n📞 **Contactos** importantes\n\n¿Sobre qué tema necesitas información?"
+  
+  # Cuando no entiende (fallback)
+  utter_fallback:
+  - text: "Hmm, no estoy seguro de entender tu pregunta. ¿Podrías reformularla? 🤔"
+  - text: "Disculpa, no comprendí bien. ¿Podrías explicarme de otra manera?"
+  
+  # Aviso antes de buscar con IA
+  utter_buscando:
+  - text: "Déjame buscar esa información para ti... 🔍"
+
+# ==========================================
+# ACTIONS: Acciones personalizadas
+# ==========================================
+actions:
+  - action_respuesta_inteligente
+  - action_default_fallback
+
+# ==========================================
+# SESSION CONFIG: Configuración de sesiones
+# ==========================================
+session_config:
+  session_expiration_time: 60  # 60 minutos
+  carry_over_slots_to_new_session: true
