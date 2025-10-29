@@ -1,0 +1,52 @@
+<!-- 
+  Componente HIJO: Tarjeta de Música
+  Recibe datos del padre con @Input
+  Envía eventos al padre con @Output
+-->
+
+<div 
+  class="music-card" 
+  (click)="onCardClick()"
+  [style.border-color]="genre.color"
+>
+  
+  <!-- Ícono del género -->
+  <div class="card-icon" [style.background]="genre.color">
+    {{ genre.icon }}
+  </div>
+  
+  <!-- Contenido -->
+  <div class="card-content">
+    <h3>{{ genre.name }}</h3>
+    <p class="artists">{{ genre.artists }}</p>
+  </div>
+  
+  <!-- Botones de acción -->
+  <div class="card-actions">
+    
+    <!-- Botón de YouTube -->
+    <button 
+      class="btn-action btn-youtube" 
+      (click)="openLink($event)"
+      title="Abrir en YouTube"
+    >
+      ▶️ YouTube
+    </button>
+    
+    <!-- Botón de Favorito -->
+    <button 
+      class="btn-action btn-favorite" 
+      (click)="onFavoriteClick($event)"
+      title="Marcar como favorito"
+    >
+      ⭐
+    </button>
+    
+  </div>
+  
+  <!-- Número de tarjeta (ejemplo de usar @Input) -->
+  <div class="card-number">
+    #{{ index + 1 }}
+  </div>
+  
+</div>

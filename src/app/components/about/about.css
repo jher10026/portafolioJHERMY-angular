@@ -1,0 +1,47 @@
+/*
+  Estilos del componente About
+  Estos estilos SOLO afectan a este componente (encapsulación)
+*/
+
+.about-section {
+  background: white;
+  padding: 3rem 0;
+}
+
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #2d3748;
+}
+
+.title-icon {
+  font-size: 2.5rem;
+}
+
+.about-card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #667eea; /* Borde izquierdo de color */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8; /* Espacio entre líneas para mejor lectura */
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}

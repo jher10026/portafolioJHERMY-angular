@@ -1,0 +1,356 @@
+<div class="horario-container">
+  
+  <!-- 
+    ═══════════════════════════════════════
+    HEADER CON ESTADÍSTICAS
+    ═══════════════════════════════════════
+  -->
+  <div class="header-section">
+    <h1>📅 HORARIO DE CLASES</h1>
+    
+    <!-- Estadísticas de asistencia -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">Asistencias:</span>
+        <span class="stat-value">{{ completedCount }} / {{ totalClasses }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Progreso:</span>
+        <div class="progress-bar">
+          <!-- 
+            PROPERTY BINDING: [ngStyle]
+            Establece el ancho dinámicamente según el porcentaje
+          -->
+          <div 
+            class="progress-fill"
+            [ngStyle]="{'width': completionPercentage + '%'}">
+          </div>
+        </div>
+        <span class="stat-value">{{ completionPercentage }}%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+    ═══════════════════════════════════════
+    CONTROLES INTERACTIVOS
+    ═══════════════════════════════════════
+  -->
+  <div class="controls-section">
+    
+    <!-- Filtro por día -->
+    <div class="day-filter">
+      <label>📆 Filtrar por día:</label>
+      <div class="day-buttons">
+        <!-- 
+          EVENT BINDING: (click)
+          PROPERTY BINDING: [class.active]
+        -->
+        <button 
+          *ngFor="let day of days"
+          (click)="selectDay(day)"
+          [class.active]="selectedDay === day"
+          class="day-btn">
+          {{ day }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Cambiar vista -->
+    <div class="view-toggle">
+      <label>👁️ Vista:</label>
+      <button 
+        (click)="changeView('table')"
+        [class.active]="viewMode === 'table'"
+        class="view-btn">
+        📊 Tabla
+      </button>
+      <button 
+        (click)="changeView('list')"
+        [class.active]="viewMode === 'list'"
+        class="view-btn">
+        📋 Lista
+      </button>
+    </div>
+
+    <!-- Acciones rápidas -->
+    <div class="quick-actions">
+      <button 
+        class="action-btn mark-all"
+        (click)="markAllComplete()">
+        ✅ Marcar Todas
+      </button>
+      <button 
+        class="action-btn reset"
+        (click)="resetAttendance()">
+        🔄 Resetear
+      </button>
+    </div>
+    
+  </div>
+
+  <!-- 
+    ═══════════════════════════════════════
+    VISTA DE TABLA (tu tabla original)
+    *ngIf: Solo muestra si viewMode === 'table'
+    ═══════════════════════════════════════
+  -->
+  <div class="schedule-container" *ngIf="viewMode === 'table'">
+    <table class="schedule-table">
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+        <th>Sábado</th>
+        <th>Domingo</th>
+      </tr>
+      <tr>
+        <td>7:00 AM</td>
+        <!-- 
+          EVENT BINDING: (click)
+          Hace la celda clickeable
+        -->
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[0])"
+          [class.completed]="classes[0].isCompleted">
+          Desarrollo Experimental e Innovación Tecnológica
+          <span *ngIf="classes[0].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[3])"
+          [class.completed]="classes[3].isCompleted">
+          Base de Datos II
+          <span *ngIf="classes[3].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[6])"
+          [class.completed]="classes[6].isCompleted">
+          Base de Datos II
+          <span *ngIf="classes[6].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[8])"
+          [class.completed]="classes[8].isCompleted">
+          Base de Datos II
+          <span *ngIf="classes[8].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[11])"
+          [class.completed]="classes[11].isCompleted">
+          Desarrollo Experimental e Innovación Tecnológica
+          <span *ngIf="classes[11].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td rowspan="2" class="empty-cell"></td>
+        <td rowspan="2" class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td>8:00 AM</td>
+      </tr>
+      <tr>
+        <td>9:00 AM</td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[1])"
+          [class.completed]="classes[1].isCompleted">
+          Sistemas Digitales
+          <span *ngIf="classes[1].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[4])"
+          [class.completed]="classes[4].isCompleted">
+          Redes de la Computación
+          <span *ngIf="classes[4].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[7])"
+          [class.completed]="classes[7].isCompleted">
+          Programación Web
+          <span *ngIf="classes[7].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          class="class-cell clickable"
+          (click)="selectClass(classes[9])"
+          [class.completed]="classes[9].isCompleted">
+          Sistemas de Información
+          <span *ngIf="classes[9].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[12])"
+          [class.completed]="classes[12].isCompleted">
+          Programación Web
+          <span *ngIf="classes[12].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td rowspan="2" class="empty-cell"></td>
+        <td rowspan="2" class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td>10:00 AM</td>
+        <td 
+          rowspan="3" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[10])"
+          [class.completed]="classes[10].isCompleted">
+          Redes de Computación
+          <span *ngIf="classes[10].isCompleted" class="check-mark">✓</span>
+        </td>
+      </tr>
+      <tr>
+        <td>11:00 AM</td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[2])"
+          [class.completed]="classes[2].isCompleted">
+          Programación Web
+          <span *ngIf="classes[2].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[5])"
+          [class.completed]="classes[5].isCompleted">
+          Sistemas Digitales
+          <span *ngIf="classes[5].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td rowspan="2" class="empty-cell"></td>
+        <td 
+          rowspan="2" 
+          class="class-cell clickable"
+          (click)="selectClass(classes[13])"
+          [class.completed]="classes[13].isCompleted">
+          Sistemas de Información
+          <span *ngIf="classes[13].isCompleted" class="check-mark">✓</span>
+        </td>
+        <td rowspan="2" class="empty-cell"></td>
+        <td rowspan="2" class="empty-cell"></td>
+      </tr>
+      <tr>
+        <td>12:00 PM</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 
+    ═══════════════════════════════════════
+    VISTA DE LISTA
+    *ngIf: Solo muestra si viewMode === 'list'
+    ═══════════════════════════════════════
+  -->
+  <div class="list-container" *ngIf="viewMode === 'list'">
+    
+    <!-- *ngFor itera las clases filtradas -->
+    <div 
+      *ngFor="let clase of filteredClasses; let i = index"
+      class="list-item"
+      [class.completed]="clase.isCompleted"
+      (click)="selectClass(clase)">
+      
+      <div class="list-item-header">
+        <!-- Checkbox -->
+        <input 
+          type="checkbox"
+          [checked]="clase.isCompleted"
+          (change)="toggleComplete(clase)"
+          (click)="$event.stopPropagation()"
+          class="checkbox">
+        
+        <div class="class-info">
+          <h3>{{ clase.name }}</h3>
+          <p>📅 {{ clase.day }} • 🕐 {{ clase.startTime }} - {{ clase.endTime }}</p>
+        </div>
+        
+        <span class="completion-badge" *ngIf="clase.isCompleted">
+          ✓ Completado
+        </span>
+      </div>
+      
+    </div>
+
+    <!-- Mensaje si no hay clases -->
+    <div *ngIf="filteredClasses.length === 0" class="no-classes">
+      <p>😔 No hay clases para {{ selectedDay }}</p>
+    </div>
+    
+  </div>
+
+  <!-- 
+    ═══════════════════════════════════════
+    PANEL DE DETALLES
+    *ngIf: Solo muestra si showDetails === true
+    ═══════════════════════════════════════
+  -->
+  <div class="details-panel" *ngIf="showDetails && selectedClass">
+    <div class="details-overlay" (click)="closeDetails()"></div>
+    
+    <div class="details-content">
+      
+      <!-- Header -->
+      <div class="details-header">
+        <h2>{{ selectedClass.name }}</h2>
+        <button class="close-btn" (click)="closeDetails()">✕</button>
+      </div>
+
+      <!-- Info -->
+      <div class="details-body">
+        <p><strong>📅 Día:</strong> {{ selectedClass.day }}</p>
+        <p><strong>🕐 Horario:</strong> {{ selectedClass.startTime }} - {{ selectedClass.endTime }}</p>
+        
+        <!-- Checkbox asistencia -->
+        <div class="attendance-check">
+          <label>
+            <input 
+              type="checkbox"
+              [(ngModel)]="selectedClass.isCompleted">
+            <span>{{ selectedClass.isCompleted ? '✅ Asistí a esta clase' : '📝 Marcar asistencia' }}</span>
+          </label>
+        </div>
+
+        <!-- 
+          TWO-WAY BINDING: [(ngModel)]
+          Sincroniza el textarea con selectedClass.notes
+        -->
+        <div class="notes-section">
+          <label><strong>📝 Notas de la clase:</strong></label>
+          <textarea 
+            [(ngModel)]="selectedClass.notes"
+            placeholder="Escribe aquí tus notas, tareas o recordatorios..."
+            rows="6"
+            class="notes-textarea">
+          </textarea>
+          <small class="char-count">
+            {{ selectedClass.notes.length }} caracteres
+          </small>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="details-footer">
+        <button class="btn-save" (click)="closeDetails()">
+          💾 Guardar y Cerrar
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+</div>

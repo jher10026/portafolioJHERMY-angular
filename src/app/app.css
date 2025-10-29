@@ -1,0 +1,28 @@
+/* 
+  Estilos SOLO para app.component
+  Estos no afectan a otros componentes (encapsulación de Angular)
+*/
+
+.app-wrapper {
+  /* 
+    min-height: 100vh significa "mínimo 100% de la altura de la ventana"
+    Esto asegura que la página ocupe toda la pantalla
+  */
+  min-height: 100vh;
+  
+  /* 
+    Flexbox: sistema de layout moderno
+    flex-direction: column hace que los elementos se apilen verticalmente
+  */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  /* 
+    flex: 1 significa "ocupa todo el espacio disponible"
+    Esto empuja el footer hacia abajo, incluso si hay poco contenido
+  */
+  flex: 1;
+}
+

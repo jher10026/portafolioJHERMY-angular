@@ -1,0 +1,369 @@
+/* 
+  ═══════════════════════════════════════
+  ESTILOS DE LA PÁGINA DE PLATOS
+  ═══════════════════════════════════════
+*/
+
+.page-container {
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8f9fa;
+}
+
+/* HEADER DE LA PÁGINA */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  /* Gradiente naranja/rojo como temática de comida */
+  background: linear-gradient(135deg, #ec2d2d 0%, #c49119 100%);  color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+/* 
+
+  ═══════════════════════════════════════
+  GRID DE PLATOS
+  ═══════════════════════════════════════
+*/
+.dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* 
+  TARJETA DE PLATO
+*/
+.dish-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.dish-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+  IMAGEN DEL PLATO
+  Fondos de colores diferentes (puedes reemplazar con imágenes reales)
+*/
+.dish-image {
+  height: 220px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  /* 
+    Aquí puedes usar:
+    background-image: url('assets/img/ceviche.jpg');
+    background-size: cover;
+    background-position: center;
+  */
+}
+
+/* Colores temáticos para cada plato */
+.dish-image.ceviche {
+  background: linear-gradient(135deg, #d9cc38 0%, #f2c94c 100%);
+}
+
+
+.dish-image.lomo {
+  background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+}
+
+.dish-image.chairo {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+.dish-image.cuy {
+  background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+}
+/* 
+  BADGE: Etiqueta de categoría sobre la imagen
+*/
+.dish-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.dish-badge span {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #2d3748;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 
+  CONTENIDO DE LA TARJETA
+*/
+.dish-content {
+  padding: 1.5rem;
+}
+
+/* 
+  HEADER: Título y rating
+*/
+.dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dish-header h3 {
+  font-size: 1.6rem;
+  color: #2d3748;
+  margin: 0;
+}
+
+.rating {
+  font-size: 0.9rem;
+}
+
+/* 
+  DESCRIPCIÓN
+*/
+.dish-description {
+  color: #718096;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* 
+  DETALLES: Tiempo, dificultad, porciones
+*/
+.dish-details {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.detail-icon {
+  font-size: 1.3rem;
+}
+
+/* 
+  INGREDIENTES
+*/
+.dish-ingredients {
+  border-top: 2px solid #e2e8f0;
+  padding-top: 1rem;
+}
+
+.dish-ingredients h4 {
+  color: #2d3748;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.dish-ingredients ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.dish-ingredients li {
+  color: #718096;
+  font-size: 0.9rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+/* 
+  ::before crea un elemento antes del contenido
+  Aquí creamos un bullet point personalizado
+*/
+.dish-ingredients li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #48bb78; /* Verde */
+  font-weight: bold;
+}
+
+/* 
+  ═══════════════════════════════════════
+  SECCIÓN DE NUTRICIÓN
+  ═══════════════════════════════════════
+*/
+.nutrition-section {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+}
+
+.nutrition-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 2.5rem;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.nutrition-card {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.nutrition-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.nutrition-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.nutrition-card h3 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin-bottom: 0.8rem;
+}
+
+.nutrition-card p {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* 
+  ═══════════════════════════════════════
+  RESPONSIVE: Ajustes para móviles
+  ═══════════════════════════════════════
+*/
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .dishes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dish-ingredients ul {
+    grid-template-columns: 1fr; /* Una columna en móvil */
+  }
+  
+  .category-tabs {
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 
+  Animación de entrada para las tarjetas
+  (opcional pero da un efecto profesional)
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dish-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 
+  Retraso escalonado para cada tarjeta
+  Crea un efecto de cascada
+*/
+.dish-card:nth-child(1) { animation-delay: 0.1s; }
+.dish-card:nth-child(2) { animation-delay: 0.2s; }
+.dish-card:nth-child(3) { animation-delay: 0.3s; }
+.dish-card:nth-child(4) { animation-delay: 0.4s; }
+.dish-card:nth-child(5) { animation-delay: 0.5s; }
+.dish-card:nth-child(6) { animation-delay: 0.6s; }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn-regresar {
+  background-color: #000;          /* Negro elegante */
+  color: #fff;                     /* Texto blanco */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-regresar:hover {
+  background-color: #222;          /* Gris más claro al pasar el mouse */
+  transform: translateY(-3px);     /* Pequeña animación */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-regresar:active {
+  transform: translateY(0);        /* Efecto al presionar */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}

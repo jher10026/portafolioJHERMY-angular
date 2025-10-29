@@ -1,0 +1,82 @@
+<div class="page-container">
+  
+  <!-- HEADER -->
+  <div class="page-header">
+    <h1>🍽️ Mis Platos Favoritos de la Costa</h1>
+  </div>
+
+  <!-- ============================================
+       SECCIÓN 1: SPINNER DE CARGA
+       Se muestra SOLO cuando isLoading = true
+       ============================================ -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p class="loading-text">⏳ Cargando platos deliciosos...</p>
+    <p class="loading-hint">Esto puede tomar unos segundos</p>
+  </div>
+
+  <!-- ============================================
+       SECCIÓN 2: MENSAJE DE ERROR
+       Se muestra SOLO si hay errorMessage Y no está cargando
+       ============================================ -->
+  <div *ngIf="errorMessage && !isLoading" class="error-container">
+    <div class="error-icon">⚠️</div>
+    <p>{{ errorMessage }}</p>
+    <button (click)="reintentar()" class="btn-retry">
+      🔄 Reintentar
+    </button>
+  </div>
+
+  <!-- ============================================
+       SECCIÓN 3: PLATOS (tu código original)
+       Se muestra SOLO cuando NO está cargando Y NO hay error
+       ============================================ -->
+  <div *ngIf="!isLoading && !errorMessage" class="dishes-grid">
+    
+    <div class="dish-card" *ngFor="let dish of dishes; let i=index; let isFirst=first">
+      <div class="dish-image" [ngClass]="dish.imageClass">
+      </div>
+      <div class="dish-content">
+        <div class="dish-header">
+          <h3>{{dish.name}}</h3>
+          <div class="rating">
+            <span>{{getStars(dish.rating)}}</span>
+          </div>
+        </div>
+        <p class="dish-description">
+          {{dish.description}}
+        </p>
+        <div class="dish-details">
+          <div class="detail-item">
+            <span class="detail-icon">🕐</span>
+            <span>{{dish.time}} min</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">{{getspicyIcon(dish.spicyLevel)}}</span>
+            <span [ngStyle]="{'color': getSpicyColor(dish.spicyLevel), 'font-weight': 'bold'}">
+              {{dish.spicyLevel}}
+            </span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">👥</span>
+            <span>{{dish.servings}} personas</span>
+          </div>
+        </div>
+        <div class="dish-ingredients">
+          <h4>Ingredientes principales:</h4>
+          <ul>
+            <li *ngFor="let ingrediente of dish.ingredients">{{ingrediente}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTÓN REGRESAR -->
+<div class="button-container">
+  <button routerLink="/platos" class="btn-regresar">
+    ← Regresar a Platos Favoritos
+  </button>
+</div>

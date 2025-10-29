@@ -1,0 +1,38 @@
+<div class="profile-container">
+  
+  <!-- HERO SECTION (sin cambios) -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="profile-image-wrapper">
+      <div class="profile-letter">Jh</div>
+      </div>
+      <h1 class="hero-title">{{ fullName }}</h1>
+      <p class="hero-subtitle">{{ title }}</p>
+    </div>
+  </section>
+
+  <!-- 
+    ═══════════════════════════════════════
+    NOTIFICACIÓN DE EVENTOS
+    Muestra cuando un hijo emite un evento
+    ═══════════════════════════════════════
+  -->
+  <!-- 
+    ═══════════════════════════════════════
+    ESTADÍSTICAS DE INTERACCIÓN
+    Muestra total de clicks recibidos de hijos
+    ═══════════════════════════════════════
+  -->
+  <!-- Componentes sin cambios -->
+  <app-about></app-about>
+  <app-quick-info></app-quick-info>
+
+  <!-- 
+    ═══════════════════════════════════════
+    SECCIÓN DE HABILIDADES CON COMPONENTES HIJOS
+    Usando app-skill-card con @Input y @Output
+    ═══════════════════════════════════════
+  -->
+  <app-skills></app-skills>
+  <app-contact></app-contact>  
+</div>

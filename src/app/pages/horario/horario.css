@@ -1,0 +1,618 @@
+/* 
+  ═══════════════════════════════════════
+  CONTENEDOR PRINCIPAL
+  ═══════════════════════════════════════
+*/
+.horario-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* 
+  ═══════════════════════════════════════
+  HEADER CON ESTADÍSTICAS
+  ═══════════════════════════════════════
+*/
+.header-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.header-section h1 {
+  margin: 0 0 1.5rem 0;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.stat-value {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Barra de progreso */
+.progress-bar {
+  width: 200px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #10b981;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* 
+  ═══════════════════════════════════════
+  CONTROLES INTERACTIVOS
+  ═══════════════════════════════════════
+*/
+.controls-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Filtro de días */
+.day-filter label,
+.view-toggle label {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+.day-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.day-btn {
+  padding: 0.7rem 1.5rem;
+  background: #e2e8f0;
+  color: #4a5568;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.day-btn:hover {
+  background: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+/* 
+  Clase dinámica aplicada con [class.active]
+*/
+.day-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #5568d3;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Toggle de vista */
+.view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.view-btn {
+  padding: 0.7rem 1.5rem;
+  background: #f8f9fa;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.view-btn.active {
+  background: #4facfe;
+  color: white;
+  border-color: #0396ff;
+}
+
+/* Acciones rápidas */
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.action-btn.mark-all {
+  background: #10b981;
+  color: white;
+}
+
+.action-btn.mark-all:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.action-btn.reset {
+  background: #ef4444;
+  color: white;
+}
+
+.action-btn.reset:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* 
+  ═══════════════════════════════════════
+  TABLA DE HORARIO
+  ═══════════════════════════════════════
+*/
+.schedule-container {
+  overflow-x: auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.schedule-table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #5568d3;
+}
+
+.schedule-table td {
+  padding: 0.8rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+/* 
+  Celdas de clase (clickeables)
+*/
+.class-cell {
+  background: #f8f9fa;
+  font-weight: 500;
+  color: #2d3748;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.class-cell.clickable {
+  cursor: pointer;
+}
+
+.class-cell.clickable:hover {
+  background: #e2e8f0;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+  Clase dinámica aplicada con [class.completed]
+  Se aplica cuando isCompleted === true
+*/
+.class-cell.completed {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+  font-weight: 600;
+  border: 2px solid #10b981;
+}
+
+/* Check mark para clases completadas */
+.check-mark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #10b981;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.empty-cell {
+  background: #fafafa;
+}
+
+/* 
+  ═══════════════════════════════════════
+  VISTA DE LISTA
+  ═══════════════════════════════════════
+*/
+.list-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-item {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list-item:hover {
+  background: #e2e8f0;
+  transform: translateX(5px);
+  border-color: #cbd5e0;
+}
+
+.list-item.completed {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: #10b981;
+}
+
+.list-item-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.class-info {
+  flex: 1;
+}
+
+.class-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.class-info p {
+  margin: 0;
+  color: #718096;
+  font-size: 0.95rem;
+}
+
+.completion-badge {
+  background: #10b981;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.no-classes {
+  text-align: center;
+  padding: 3rem;
+  color: #718096;
+  font-size: 1.2rem;
+}
+
+/* 
+  ═══════════════════════════════════════
+  PANEL DE DETALLES
+  ═══════════════════════════════════════
+*/
+.details-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Overlay oscuro */
+.details-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Contenido del panel */
+.details-content {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+.details-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.details-body {
+  padding: 2rem;
+}
+
+.details-body p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.details-body p strong {
+  color: #2d3748;
+}
+
+/* Checkbox de asistencia */
+.attendance-check {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.attendance-check label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.attendance-check input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+/* Sección de notas */
+.notes-section {
+  margin-top: 1.5rem;
+}
+
+.notes-section label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+/* 
+  Textarea con two-way binding [(ngModel)]
+*/
+.notes-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.char-count {
+  display: block;
+  margin-top: 0.5rem;
+  color: #718096;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.details-footer {
+  padding: 1.5rem 2rem;
+  background: #f8f9fa;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-save {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+}
+
+/* 
+  ═══════════════════════════════════════
+  ANIMACIONES
+  ═══════════════════════════════════════
+*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 
+  ═══════════════════════════════════════
+  RESPONSIVE
+  ═══════════════════════════════════════
+*/
+@media (max-width: 768px) {
+  .horario-container {
+    padding: 1rem;
+  }
+
+  .header-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .stats-bar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .progress-bar {
+    width: 150px;
+  }
+
+  .day-buttons {
+    justify-content: center;
+  }
+
+  .schedule-table {
+    font-size: 0.75rem;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.5rem;
+  }
+
+  .details-content {
+    max-height: 95vh;
+  }
+
+  .details-header h2 {
+    font-size: 1.2rem;
+  }
+}

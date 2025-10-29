@@ -1,0 +1,164 @@
+.info-section {
+  background: #f8f9fa;
+  padding: 3rem 0;
+}
+
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #2d3748;
+}
+
+.title-icon {
+  font-size: 2.5rem;
+}
+
+/* ====== NUEVO LAYOUT: TARJETAS + MAPA ====== */
+.info-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Grid de tarjetas (lado izquierdo) */
+.info-grid {
+  flex: 1 1 55%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Contenedor del mapa (lado derecho) */
+.map-container {
+  flex: 1 1 40%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.map-title {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+/* Animación suave al aparecer el mapa */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Tarjetas ====== */
+.info-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.info-card p {
+  color: #718096;
+  font-size: 1rem;
+}
+
+/* ====== Tarjeta clickeable ====== */
+.clickable-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.clickable-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+}
+
+.clickable-card:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.click-hint {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: #667eea;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.clickable-card:hover .click-hint {
+  opacity: 1;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.clickable-card:hover .info-icon {
+  filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
+}
+
+.clickable-card h3,
+.clickable-card p {
+  transition: color 0.3s ease;
+}
+
+.clickable-card:hover h3 {
+  color: #667eea;
+}
+
+.clickable-card:hover p {
+  color: #4a5568;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .info-layout {
+    flex-direction: column;
+  }
+
+  .map-container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+  <section class="skills-section">
+    <div class="section-content">
+      <h2 class="section-title">
+        <span class="title-icon">🚀</span>
+        Habilidades
+      </h2>
+      <div class="skills-grid">
+
+              
+      <!-- 
+        ✨ *ngFor con datos del servicio
+        Antes: hardcodeado
+        Ahora: dinámico desde ProfileService
+      -->
+        
+        <!-- Barra de progreso para HTML -->
+        <div class="skill-item" *ngFor="let skill of skills">
+          <div class="skill-header">
+            <span>{{skill.icon}} {{skill.name}}</span>
+            <span>{{skill.level}}%</span>
+          </div>
+          <!-- La barra se llena según el porcentaje -->
+          <div class="skill-bar">
+            <div class="skill-progress" [ngStyle]="{'width': skill.level + '%'}"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,274 @@
+/* 
+  ═══════════════════════════════════════
+  ESTILOS DE LA PÁGINA DE JUEGOS
+  ═══════════════════════════════════════
+*/
+
+.page-container {
+  min-height: calc(100vh - 200px); /* Altura mínima menos header y footer */
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8f9fa;
+}
+
+/* 
+  HEADER DE LA PÁGINA
+  Título con fondo degradado
+*/
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #020410 0%, #4f4f50 100%);
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+/* 
+  ═══════════════════════════════════════
+  GRID DE JUEGOS
+  Grid responsivo que se ajusta automáticamente
+  ═══════════════════════════════════════
+*/
+.games-grid {
+  display: grid;
+  /* 
+    repeat(auto-fit, ...) crea columnas automáticamente
+    minmax(320px, 1fr) cada columna mínimo 320px
+  */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem; /* Espacio entre tarjetas */
+  margin-bottom: 3rem;
+}
+
+/* 
+  TARJETA DE JUEGO
+*/
+.game-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden; /* Esconde lo que sobresale de los bordes */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer; /* Manita al pasar el mouse */
+}
+
+/* 
+  :hover - Efecto al pasar el mouse
+*/
+.game-card:hover {
+  transform: translateY(-10px); /* Sube 10px */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra más grande */
+}
+
+/* 
+  IMAGEN DEL JUEGO
+  Cada juego tiene un fondo de color diferente (puedes reemplazar con imágenes)
+*/
+.game-image {
+  height: 200px;
+  position: relative;
+  /* 
+    background: linear-gradient(...) crea un degradado
+    Puedes reemplazar esto con background-image: url('ruta-imagen.jpg');
+  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+/* Colores específicos para cada juego */
+.game-image.minecraft {
+  background: linear-gradient(135deg, #3cba54 0%, #0f9d58 100%);
+}
+
+.game-image.Left-4-Dead-2 {
+  background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+}
+.game-image.mobil-legends {
+  background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+}
+/* 
+  OVERLAY: Capa sobre la imagen
+*/
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 
+    background: rgba(0, 0, 0, 0.3) = negro con 30% de opacidad
+    Oscurece la imagen para que el texto se lea mejor
+  */
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-start; /* Alinea al inicio (arriba) */
+  justify-content: flex-end; /* Alinea al final (derecha) */
+  padding: 1rem;
+}
+
+/* 
+  GÉNERO DEL JUEGO (badge en la esquina)
+*/
+.game-genre {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d3748;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* 
+  CONTENIDO DE LA TARJETA
+*/
+.game-content {
+  padding: 1.5rem;
+}
+
+.game-content h3 {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 0.8rem;
+}
+
+.game-description {
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* 
+  ESTADÍSTICAS DEL JUEGO
+  Calificación y horas jugadas
+*/
+.game-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0; /* Línea separadora */
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.stat-icon {
+  font-size: 1.2rem;
+}
+
+/* 
+  TAGS/ETIQUETAS
+*/
+.game-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* Permite que bajen a otra línea si no caben */
+}
+
+.tag {
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* 
+  ═══════════════════════════════════════
+  SECCIÓN DE PLATAFORMAS
+  ═══════════════════════════════════════
+*/
+.platforms-section {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+}
+
+.platforms-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 2rem;
+}
+
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.platform-card {
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.platform-card:hover {
+  transform: translateY(-5px);
+  background: #e9ecef;
+}
+
+.platform-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.platform-card h3 {
+  font-size: 1.3rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.platform-card p {
+  color: #718096;
+  font-size: 0.95rem;
+}
+
+/* 
+  ═══════════════════════════════════════
+  RESPONSIVE: Ajustes para móviles
+  ═══════════════════════════════════════
+*/
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .games-grid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+  }
+  
+  .platforms-section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* botton */
+

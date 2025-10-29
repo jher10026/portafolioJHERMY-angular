@@ -1,0 +1,90 @@
+<div class="page-container">
+  
+  <!-- TU HEADER ORIGINAL (sin cambios) -->
+  <div class="page-header">
+    <h1>Juegos de Laptop</h1>
+  </div>
+
+  <!-- TU GRID ORIGINAL -->
+  <div class="games-grid">
+    <!-- 
+      ═══════════════════════════════════════
+      CAMBIO PRINCIPAL: *ngFor
+      Reemplaza tus 2 <div class="game-card"> por uno solo
+      que se repite automáticamente
+      ═══════════════════════════════════════
+    -->
+    <div 
+      class="game-card" *ngFor="let game of games; let i = index">
+      <!-- 
+        [ngClass]: Aplica clase dinámica según imageClass
+        Reemplaza: class="game-image minecraft"
+        Por: class="game-image" [ngClass]="game.imageClass"
+      -->
+      <div class="game-image" [ngClass]="game.imageClass">
+        <div class="game-overlay">
+          <!-- {{ game.genre }} muestra el género dinámicamente -->
+          <span class="game-genre">{{ game.genre | mayuscula}}</span>
+        </div>
+      </div>
+
+      <div class="game-content">
+        <!-- {{ game.name }} muestra el nombre dinámicamente -->
+        <h3>{{ game.name }}</h3>
+
+        <!-- 
+          | truncate:100:true
+          PIPE PERSONALIZADO: corta la descripción a 100 caracteres
+        -->
+        <p class="game-description">
+          {{ game.description}}
+        </p>
+
+        <div class="game-stats">
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <!-- 
+              [ngStyle]: Aplica color dinámico
+              Si rating empieza con "9.", color verde, sino azul
+            -->
+            <span 
+              [ngStyle]="{
+                'color': game.rating.startsWith('9.5') ? '#10b981' : '#3b82f6',
+                'font-weight': 'bold'
+              }">
+              {{ game.rating }}
+            </span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">🕐</span>
+            <span>{{ game.hours }}</span>
+          </div>
+        </div>
+
+        <!-- 
+          *ngFor ANIDADO: itera los tags de cada juego
+          Reemplaza:
+            <span class="tag">Creatividad</span>
+            <span class="tag">Multijugador</span>
+          Por:
+            *ngFor que genera los tags automáticamente
+        -->
+        <div class="game-tags">
+          <span 
+            class="tag"
+            *ngFor="let tag of game.tags">
+            {{ tag }}
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TU BOTÓN ORIGINAL (sin cambios) -->
+  <div class="botton">
+    <button routerLink="/juegos">← Regresar a Juegos Favoritos</button>
+  </div>
+
+</div>

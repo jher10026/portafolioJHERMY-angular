@@ -1,0 +1,174 @@
+/* 
+  ═══════════════════════════════════════
+  ESTILOS GLOBALES
+  Estos estilos afectan a TODA la aplicación
+  ═══════════════════════════════════════
+*/
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* El padding no aumenta el tamaño total */
+}
+
+/* 
+  Estilos del body
+*/
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6; /* Espaciado entre líneas */
+  color: #333;
+  background: #f8f9fa;
+  /* 
+    Mejora la suavidad del scroll
+  */
+  scroll-behavior: smooth;
+}
+
+/* 
+  Contenedor principal de la app
+*/
+.app-wrapper {
+  min-height: 100vh; /* Mínimo altura de ventana completa */
+  display: flex;
+  flex-direction: column; /* Apila elementos verticalmente */
+}
+
+/* 
+  Contenido principal ocupa todo el espacio disponible
+  Esto empuja el footer hacia abajo
+*/
+.main-content {
+  flex: 1;
+}
+
+/* 
+  ═══════════════════════════════════════
+  FOOTER MODERNO
+  ═══════════════════════════════════════
+*/
+.modern-footer {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto; /* Se pega automáticamente al fondo */
+}
+
+.modern-footer p {
+  margin: 0.5rem 0;
+}
+
+.footer-subtitle {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* 
+  ═══════════════════════════════════════
+  UTILIDADES GLOBALES
+  ═══════════════════════════════════════
+*/
+
+/* Transiciones suaves para todos los elementos */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 
+  Mejora la legibilidad del texto
+*/
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 
+  Scrollbar personalizada (solo funciona en navegadores webkit)
+*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 
+  Imágenes responsivas por defecto
+*/
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 
+  Links sin subrayado por defecto
+*/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 
+  Botones con cursor pointer
+*/
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* 
+  ═══════════════════════════════════════
+  CLASES DE UTILIDAD
+  Puedes usar estas clases en cualquier parte
+  ═══════════════════════════════════════
+*/
+
+/* Centrar texto */
+.text-center {
+  text-align: center;
+}
+
+/* Ocultar en móviles */
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+}
+
+/* Mostrar solo en móviles */
+.show-mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .show-mobile {
+    display: none;
+  }
+}
+
+/* 
+  Container genérico
+*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+

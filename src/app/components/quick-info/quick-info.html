@@ -1,0 +1,45 @@
+<!-- 
+  Componente de información rápida
+  Muestra datos importantes y el mapa al lado derecho
+-->
+<section class="info-section">
+  <div class="section-content">
+    <h2 class="section-title">
+      <span class="title-icon">⚡</span>
+      Información Rápida
+    </h2>
+
+    <!-- Contenedor que divide tarjetas y mapa -->
+      <!-- ======== GRID DE TARJETAS ======== -->
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>{{location}}</p>
+        </div>
+
+        <!-- Tarjeta clickeable -->
+        <div class="info-card">
+          <div class="info-icon">🎓</div>
+          <h3>Carrera</h3>
+          <p>{{career}}</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📚</div>
+          <h3>Semestre</h3>
+          <p>{{semester}}</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">💻</div>
+          <h3>Tecnologías</h3>
+          <p>
+            <span *ngFor="let tech of technologies; let last=last">
+              {{tech}}<span *ngIf="!last">,</span>
+            </span>
+          </p>
+        </div>
+      </div>
+  </div>
+</section>

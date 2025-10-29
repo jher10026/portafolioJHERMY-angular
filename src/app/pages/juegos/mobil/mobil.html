@@ -1,0 +1,51 @@
+<div class="page-container">
+  
+  <!-- 
+    HEADER DE LA PÁGINA
+    Título y descripción con fondo llamativo
+  -->
+  <div class="page-header">
+    <h1>Juegos Mobiles</h1>
+  </div>
+
+  <!-- 
+    GRID DE JUEGOS
+    Las tarjetas se ajustan automáticamente según el tamaño de pantalla
+  -->
+<div class="games-grid" >
+    
+    <!-- TARJETA DE JUEGO 1 -->
+    <div class="game-card" *ngFor="let games of games">
+      <!-- 
+        Imagen del juego
+        Puedes reemplazar con imágenes reales más adelante
+      -->
+      <div class="game-image" [ngClass]="games.imageClass">
+        <div class="game-overlay">
+          <span class="game-genre">{{games.genre}}</span>
+        </div>
+      </div>
+      <div class="game-content">
+        <h3>{{games.name}}</h3>
+        <p class="game-description">
+          {{games.description}}
+        </p>
+        <div class="game-stats">
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span [ngStyle]="{'color': games.rating === '5/5' ? 'green' : 'red'}">{{games.rating}}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">🕐</span>
+            <span>{{games.hours}}</span>
+          </div>
+        </div>
+        <div class="game-tags">
+          <span class="tag" *ngFor="let tag of games.tags">Creatividad</span>
+        </div>
+      </div>
+    </div>
+</div>
+    <div class="botton">
+      <button routerLink="/juegos">← Regresar a Juegos Favoritos</button>
+    </div>

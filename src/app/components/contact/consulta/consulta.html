@@ -1,0 +1,30 @@
+<section class="consulta-section">
+  <h2>Formulario de Consulta</h2>
+
+  <!-- Si aún no se envía, mostrar el formulario -->
+  <form *ngIf="!enviado" (ngSubmit)="enviarFormulario()" #formConsulta="ngForm" class="consulta-form">
+    
+    <label>
+      Nombre:
+      <input type="text" name="nombre" [(ngModel)]="nombre" required placeholder="Tu nombre">
+    </label>
+
+    <label>
+      Mensaje:
+      <textarea name="mensaje" [(ngModel)]="mensaje" required placeholder="Escribe tu consulta"></textarea>
+    </label>
+
+    <div class="botones">
+      <button type="submit" [disabled]="formConsulta.invalid">Enviar</button>
+      <button routerLink="/inicio" type="button" class="volver">Volver a Contacto</button>
+    </div>
+  </form>
+
+  <!-- Si se envía, mostrar mensaje de agradecimiento -->
+  <div *ngIf="enviado" class="gracias">
+    <h3>Gracias por consultar, {{ nombre }} 😊</h3>
+    <p>Te responderemos pronto.</p>
+
+    <button routerLink="/inicio" class="volver">Volver a Contacto</button>
+  </div>
+</section>

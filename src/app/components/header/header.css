@@ -1,0 +1,131 @@
+/* 
+  HEADER MODERNO CON GRADIENTE
+*/
+.modern-header {
+  /* 
+    linear-gradient() crea un degradado de colores
+    135deg = ángulo diagonal
+    #667eea = morado claro → #764ba2 = morado oscuro
+  */
+  background: linear-gradient(135deg, #070707 0%, #4e4c4c 100%);
+  
+  /* box-shadow: sombra para dar profundidad */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* 
+    position: sticky hace que el header se "pegue" arriba al hacer scroll
+    Es como position: fixed pero mejor
+  */
+  position: sticky;
+  top: 0;
+  
+  /* z-index alto para que esté sobre otros elementos */
+  z-index: 1000;
+}
+
+/*
+  NAVBAR: Contenedor de la navegación
+*/
+.navbar {
+  /* 
+    Flexbox para alinear elementos horizontalmente
+    justify-content: space-between separa los elementos con espacio entre ellos
+    align-items: center los centra verticalmente
+  */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* 1rem arriba/abajo, 2rem izquierda/derecha */
+  max-width: 1400px; /* Ancho máximo */
+  margin: 0 auto; /* Centra horizontalmente */
+  
+  /* 
+    flex-wrap: wrap permite que los elementos bajen a otra línea en pantallas pequeñas
+    gap: 1rem espacio entre elementos
+  */
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/*
+  SECCIÓN DEL LOGO
+*/
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Espacio entre imagen y texto */
+}
+
+.perfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Hace la imagen circular */
+  border: 3px solid white;
+  object-fit: cover; /* Recorta la imagen para que no se deforme */
+  
+  /* 
+    transition: animación suave al cambiar propiedades
+    0.3s = duración, ease = tipo de animación
+  */
+  transition: transform 0.3s ease;
+}
+
+/* 
+  :hover se activa cuando pasas el mouse por encima
+*/
+.perfil:hover {
+  transform: scale(1.1); /* Agranda la imagen 10% */
+}
+
+.brand-name {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: none; /* Oculto por defecto en móviles */
+}
+
+/*
+  LINKS DE NAVEGACIÓN
+*/
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none; /* Quita el subrayado */
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease; /* Anima TODAS las propiedades */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links a:hover {
+  /* Fondo semi-transparente blanco */
+  background: rgba(255, 255, 255, 0.2);
+  /* Mueve el elemento 2px hacia arriba */
+  transform: translateY(-2px);
+}
+
+/* 
+  .active es agregada automáticamente por routerLinkActive
+  cuando el link corresponde a la página actual
+*/
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*
+  MEDIA QUERY: Estilos para pantallas >= 768px (tablets y escritorio)
+*/
+@media (min-width: 768px) {
+  .brand-name {
+    display: inline; /* Muestra el nombre en pantallas grandes */
+  }
+}

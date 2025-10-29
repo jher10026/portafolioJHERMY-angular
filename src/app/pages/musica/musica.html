@@ -1,0 +1,35 @@
+<div class="page-container">
+  
+  <div class="page-header">
+    <h1>🎵 Mi Música Favorita</h1>
+    <p>Los géneros y artistas que más escucho</p>
+  </div>
+
+  <div class="content-grid">
+    
+    <!-- ========================================
+         USO DEL COMPONENTE HIJO
+         - [genre]: Pasa datos AL hijo (@Input)
+         - (genreClicked): Recibe eventos DEL hijo (@Output)
+         ======================================== -->
+    <app-music-card
+      *ngFor="let genre of genres; let i = index"
+      [genre]="genre"
+      [index]="i"
+      (genreClicked)="onGenreClick($event)"
+      (genreFavorited)="onGenreFavorite($event)"
+    ></app-music-card>
+    
+  </div>
+
+  <!-- Sección adicional para ver los conceptos -->
+  <div class="explanation-box">
+    <h3>💡 Comunicación entre componentes:</h3>
+    <ul>
+      <li><strong>@Input()</strong>: Padre → Hijo (pasando datos)</li>
+      <li><strong>@Output()</strong>: Hijo → Padre (enviando eventos)</li>
+      <li><strong>Haz click</strong> en una tarjeta para ver la comunicación en acción</li>
+    </ul>
+  </div>
+
+</div>

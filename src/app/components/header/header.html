@@ -1,0 +1,38 @@
+<!-- 
+  Header con navegación profesional
+-->
+<header class="modern-header">
+  <nav class="navbar">
+    
+    <!-- SECCIÓN IZQUIERDA: Logo y nombre -->
+    <div class="nav-brand">
+      <span class="brand-name">Jhermy Yupanqui</span>
+    </div>
+    
+    <!-- SECCIÓN CENTRAL: Links de navegación -->
+    <div class="nav-links">
+      <!-- 
+        routerLink="/inicio" - Directiva de Angular para navegación
+        Es como href pero SIN recargar la página
+        
+        routerLinkActive="active" - Agrega la clase CSS "active" cuando estás en esa ruta
+        Ejemplo: si estás en /musica, el link de música tendrá la clase "active"
+      -->
+      <a routerLink="/inicio" routerLinkActive="active">
+        <span class="icon">🏠</span> INICIO
+      </a>
+      <a routerLink="/musica" routerLinkActive="active">
+        <span class="icon">🎵</span> MÚSICA
+      </a>
+      <a routerLink="/juegos" routerLinkActive="active">
+        <span class="icon">🎮</span> JUEGOS
+      </a>
+      <a routerLink="/platos" routerLinkActive="active">
+        <span class="icon">🍽️</span> PLATOS
+      </a>
+      <a routerLink="/horario" routerLinkActive="active">
+        <span class="icon">📅</span> HORARIO
+      </a>
+    </div>
+  </nav>
+</header>

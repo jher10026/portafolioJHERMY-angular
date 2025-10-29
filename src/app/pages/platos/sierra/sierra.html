@@ -1,0 +1,74 @@
+<!-- 
+  Página de Platos Favoritos
+  Muestra tus comidas preferidas con recetas y detalles
+-->
+
+<div class="page-container">
+  
+  <!-- HEADER DE LA PÁGINA -->
+  <div class="page-header">
+    <h1>🍽️ Mis Platos Favoritos de la Sierra</h1>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p class="loading-text">Cargando platos deliciosos...</p>
+    <p class="loading-hint">Esto puedo tomar unos segundos</p>
+  </div>
+
+  <div *ngIf="errorMessage && !isLoading" class="error-container">
+    <div class="error-icon">⚠️</div>
+    <p>{{errorMessage}}</p>
+    <button (click)="reintentar()" class="btn-retry"> Reintentar</button>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage" class="dishes-grid">
+
+    
+    <!-- PLATO 1: Ceviche -->
+    <div class="dish-card" *ngFor="let dish of dishes; let i=index; let isFirst=first">
+      <div class="dish-image" [ngClass]="dish.imageClass">
+      </div>
+      <div class="dish-content">
+        <div class="dish-header">
+          <h3>{{dish.name}}</h3>
+          <div class="rating">
+            <span>{{getStars(dish.rating)}}</span>
+          </div>
+        </div>
+        <p class="dish-description">
+          {{dish.description}}
+        </p>
+        <div class="dish-details">
+          <div class="detail-item">
+            <span class="detail-icon">🕐</span>
+            <span>{{dish.time}} min</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">{{getPa_llenarIcon(dish.Pa_llenar)}}</span>
+            <span [ngStyle]="{'color': getPa_llenarColor(dish.Pa_llenar), 'font-weight': 'bold'}">{{dish.Pa_llenar}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">👥</span>
+            <span>{{dish.servings}} personas</span>
+          </div>
+        </div>
+        <div class="dish-ingredients">
+          <h4>Ingredientes principales:</h4>
+          <ul>
+            <li *ngFor="let ingredientes of dish.ingredients">{{ingredientes}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="button-container">
+  <button routerLink="/platos" class="btn-regresar">
+    ← Regresar a Platos Favoritos
+  </button>
+</div>
+

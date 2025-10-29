@@ -1,0 +1,36 @@
+<!-- 
+  Este es el CONTENEDOR PRINCIPAL de toda la aplicación
+  Todo lo que pongas aquí se verá en TODAS las páginas
+-->
+<div class="app-wrapper">
+  
+  <!-- 
+    HEADER: Se muestra en TODAS las páginas
+    <app-header> es una etiqueta personalizada que Angular convierte
+    en el contenido de header.component.html
+  -->
+  <app-header></app-header>
+  
+  <!-- 
+    MAIN: Contenedor del contenido principal
+  -->
+  <main class="main-content">
+    <!-- 
+      <router-outlet> es MÁGICO:
+      - Es un "espacio vacío" donde Angular coloca los componentes
+      - Dependiendo de la URL, aquí aparece:
+        /inicio → InicioComponent
+        /musica → MusicaComponent
+        etc.
+      - El header y footer NO se recargan, solo cambia este contenido
+    -->
+    <router-outlet></router-outlet>
+  </main>
+  
+  <!-- 
+    FOOTER: Se muestra en TODAS las páginas
+    Es HTML normal, no un componente (pero podrías hacerlo componente)
+  -->
+<app-footer></app-footer>
+  
+</div>
